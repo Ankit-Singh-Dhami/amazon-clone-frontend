@@ -1,0 +1,80 @@
+.nav2 {
+  background-color: #232f3e; /* Amazon nav2 dark blue */
+  border-radius: 4px;
+  padding: 0 12px;
+  height: 3rem; /* slightly taller */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: none; /* Amazon's nav2 has no shadow */
+}
+
+.align {
+  display: flex;
+  justify-content: flex-start; /* left aligned items */
+  align-items: center;
+  width: 100%;
+  gap: 5px; /* gap between items */
+  overflow-x: auto; /* horizontal scroll if needed */
+  scrollbar-width: none; /* Firefox */
+}
+
+.align::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.all,
+.fresh,
+.mxplayer,
+.sell,
+.bestSeller,
+.today_deal,
+.mobile,
+.prime,
+.customer_service,
+.fashion,
+.new_release,
+.amazon_pay,
+.electronics,
+.kitchen,
+.car {
+  padding: 6px 5px; /* vertical and horizontal padding */
+  font-weight: 600; /* medium weight */
+  font-size: 0.85rem; /* 14px */
+  color: #ddd; /* light gray */
+  border: 2px solid transparent; /* for no layout shift */
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1px; /* space between icon and text if any */
+  white-space: nowrap; /* prevent wrap */
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.all_icon {
+  font-size: 1.1rem;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.all:hover,
+.fresh:hover,
+.mxplayer:hover,
+.sell:hover,
+.bestSeller:hover,
+.today_deal:hover,
+.mobile:hover,
+.prime:hover,
+.customer_service:hover,
+.fashion:hover,
+.new_release:hover,
+.amazon_pay:hover,
+.electronics:hover,
+.kitchen:hover,
+.car:hover {
+  border-color: white;
+  color: white;
+  background-color: transparent; /* keep background transparent */
+}
