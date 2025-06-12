@@ -4,7 +4,7 @@ import Navbar from "../components/NavBar/Navbar.jsx";
 import { CartContext } from "../context/Cart_context.jsx";
 
 const Carts = () => {
-  const { cart, fetchCart } = useContext(CartContext);
+  const { fetchCart } = useContext(CartContext);
 
   useEffect(() => {
     fetchCart();
@@ -13,7 +13,7 @@ const Carts = () => {
   return (
     <>
       <Navbar />
-      <Cart items={cart} />
+      <Cart />
     </>
   );
 };

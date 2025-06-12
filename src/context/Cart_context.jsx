@@ -17,7 +17,7 @@ const cartReducer = (state, action) => {
     case "ADD_TO_CART":
       return [...state, action.payload];
     case "REMOVE_FROM_CART":
-      return state.filter((item) => item.id !== action.payload.id);
+      return state.filter((item) => item._id !== action.payload._id);
     case "CLEAR_CART":
       return [];
     default:
@@ -28,12 +28,21 @@ const cartReducer = (state, action) => {
 const CartProvider = ({ children }) => {
   const [cart, dispatchCart] = useReducer(cartReducer, []);
 
+  const fetchCart = async () => {
+    try {
+      const cartItems = await getCart();
+      dispatchCart({ type: "SET_CART", payload: cartItems });
+    } catch (err) {
+      console.error("Error fetching cart:", err.message);
+    }
+  };
+
   const addToCart = async (item) => {
     console.log(item);
     try {
       const addedItem = await addCartToServer(item);
       console.log("the error while adding", addedItem);
-      dispatchCart({ type: "ADD_TO_CART", payload: addedItem });
+      await fetchCart();
     } catch (err) {
       console.error("Error adding to cart:", err.message);
     }
@@ -42,7 +51,7 @@ const CartProvider = ({ children }) => {
   const removeFromCart = async (itemId) => {
     try {
       await deleteCart(itemId);
-      dispatchCart({ type: "REMOVE_FROM_CART", payload: { id: itemId } });
+      await fetchCart();
     } catch (err) {
       console.error("Error removing from cart:", err.message);
     }
@@ -50,15 +59,6 @@ const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     dispatchCart({ type: "CLEAR_CART" });
-  };
-
-  const fetchCart = async () => {
-    try {
-      const cartItems = await getCart();
-      dispatchCart({ type: "SET_CART", payload: cartItems });
-    } catch (err) {
-      console.error("Error fetching cart:", err.message);
-    }
   };
 
   return (

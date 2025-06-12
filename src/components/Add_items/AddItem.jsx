@@ -27,7 +27,7 @@ const AddItem = ({ items }) => {
             </button>
 
             {cart.some(
-              (itemInCart) => itemInCart && itemInCart.id === item.id
+              (itemInCart) => itemInCart && itemInCart._id === item._id
             ) ? (
               <button
                 className={style.addedToCartButton}

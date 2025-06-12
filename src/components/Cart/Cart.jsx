@@ -1,15 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import style from "../../styles/cart_css/cart.module.css";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/Cart_context";
 
-const Cart = ({ items }) => {
-  console.log(items);
+const Cart = () => {
+  const { cart } = useContext(CartContext);
+  const initialQuantities = cart.map(() => 1);
+  const [quantities, setQuantities] = useState(initialQuantities);
+
+  useEffect(() => {
+    setQuantities(cart.map(() => 1));
+  }, [cart]);
+
+  console.log(cart);
 
   const { removeFromCart } = useContext(CartContext);
-
-  const initialQuantities = items.map(() => 1);
-  const [quantities, setQuantities] = useState(initialQuantities);
 
   const handleDecrease = (index) => {
     setQuantities((prevQuantities) =>
@@ -24,7 +29,7 @@ const Cart = ({ items }) => {
   };
 
   const totalItems = quantities.reduce((sum, qty) => sum + qty, 0);
-  const totalPrice = items.reduce(
+  const totalPrice = cart.reduce(
     (sum, item, index) => sum + item.price * quantities[index],
     0
   );
@@ -39,7 +44,7 @@ const Cart = ({ items }) => {
         <h1 className={style.cart_h1}>Shopping Cart</h1>
         <div className={style.cart_items}>
           {role === "user" || role === "host" ? (
-            items.map((item, index) => (
+            cart.map((item, index) => (
               <div key={index} className={style.cart_item}>
                 <div className={style.img_div}>
                   <img src={item.image} alt="" className={style.cart_img} />
@@ -57,7 +62,9 @@ const Cart = ({ items }) => {
                 </div>
                 <button
                   className={style.remove_btn}
-                  onClick={() => removeFromCart(item._id)}
+                  onClick={() => {
+                    removeFromCart(item._id);
+                  }}
                 >
                   Remove
                 </button>
