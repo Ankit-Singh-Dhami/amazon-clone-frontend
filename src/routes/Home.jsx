@@ -21,6 +21,7 @@ const Home = () => {
           <Nav2 />
           <MainImage />
           <Item1 />
+          <AddItems />
         </>
       )}
       <Footer />

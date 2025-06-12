@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "../../styles/account_css/signUp.module.css";
 import amazon from "../../styles/images/amazon_logo.png";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { signinData } from "../../service/serverData";
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,6 @@ export default function Signup() {
 
     try {
       const response = await signinData(Data);
-      console.log("Login success:", response);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error.message);

@@ -15,8 +15,6 @@ const AddItems = () => {
     fetchCart();
   }, []);
 
-  console.log(items); // log full item array
-
   return (
     <>
       <AddItem items={items} />

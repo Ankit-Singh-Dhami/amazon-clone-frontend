@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const CreateItem = () => {
   const navigate = useNavigate();
 
-  const { addToItem, removeFromItem } = useContext(ItemContext);
+  const { addToItem } = useContext(ItemContext);
 
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
@@ -77,8 +77,6 @@ const CreateItem = () => {
       <button onClick={handleAddItem} className={style.button}>
         Add Item
       </button>
-
-      {/* Display items below */}
     </div>
   );
 };
