@@ -63,7 +63,6 @@ export const getCart = async () => {
 // Add to Cart
 export const addCartToServer = async (item) => {
   const token = localStorage.getItem("amazonUserToken");
-  console.log("TOKEN:", token);
 
   const response = await fetch("http://localhost:3007/api/amazon/cart", {
     method: "POST",
@@ -80,8 +79,8 @@ export const addCartToServer = async (item) => {
 
   const result = await response.json();
   console.log(result);
-  console.log(result.cart);
-  return result.cart; // Correct!
+
+  return result; // Correct!
 };
 
 // Delete from Cart

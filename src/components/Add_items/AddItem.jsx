@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { useContext } from "react";
 import style from "../../styles/add_css/AddItem.module.css";
 import { CartContext } from "../../context/Cart_context";
 import { ItemContext } from "../../context/Create_item_context";
@@ -12,34 +12,34 @@ const AddItem = ({ items }) => {
   return (
     <div className={style.itemsList}>
       {Array.isArray(items) && items.length > 0 ? (
-        items.map((item) => (
-          <div key={item.id} className={style.item}>
+        items.map((item, index) => (
+          <div key={index} className={style.item}>
             <img src={item.image} alt="Item" className={style.itemImage} />
             <p className={style.description}>{item.description}</p>
             <p className={style.price}>${item.price}</p>
             <button
               onClick={() => {
-                removeFromItem(item.id); // removes from item list
-                removeFromCart(item.id); // also remove from cart
+                removeFromItem(item._id); // removes from item list
+                removeFromCart(item._id); // also remove from cart
               }}
             >
               Remove
             </button>
 
-            {(cart || []).some(
+            {cart.some(
               (itemInCart) => itemInCart && itemInCart.id === item.id
             ) ? (
               <button
                 className={style.addedToCartButton}
-                onClick={() => removeFromCart(item.id)}
+                onClick={() => removeFromCart(item._id)}
               >
                 Remove from Cart
               </button>
             ) : (
               <button
                 onClick={() => {
-                  addToCart(item);
                   console.log(item);
+                  addToCart(item);
                 }}
                 className={style.addToCartButton}
               >

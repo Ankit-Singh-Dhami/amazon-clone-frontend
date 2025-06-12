@@ -29,6 +29,7 @@ const CartProvider = ({ children }) => {
   const [cart, dispatchCart] = useReducer(cartReducer, []);
 
   const addToCart = async (item) => {
+    console.log(item);
     try {
       const addedItem = await addCartToServer(item);
       console.log("the error while adding", addedItem);

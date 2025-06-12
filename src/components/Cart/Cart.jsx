@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import style from "../../styles/cart_css/cart.module.css";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/Cart_context";
 
 const Cart = ({ items }) => {
   console.log(items);
+
+  const { removeFromCart } = useContext(CartContext);
 
   const initialQuantities = items.map(() => 1);
   const [quantities, setQuantities] = useState(initialQuantities);
@@ -44,7 +47,7 @@ const Cart = ({ items }) => {
 
                 <div className={style.item_des}>
                   <p className={style.item_para}>{item.description}</p>
-                  {/* <p className={style.item_price}>${item.price}</p> */}
+                  <p className={style.item_price}>${item.price}</p>
 
                   <div className={style.in_dec}>
                     <span onClick={() => handleDecrease(index)}>-</span>
@@ -52,6 +55,12 @@ const Cart = ({ items }) => {
                     <span onClick={() => handleIncrease(index)}>+</span>
                   </div>
                 </div>
+                <button
+                  className={style.remove_btn}
+                  onClick={() => removeFromCart(item._id)}
+                >
+                  Remove
+                </button>
               </div>
             ))
           ) : (
