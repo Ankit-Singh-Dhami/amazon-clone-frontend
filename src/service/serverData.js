@@ -61,6 +61,8 @@ export const getCart = async () => {
 // Add to Cart
 export const addCartToServer = async (item) => {
   const token = localStorage.getItem("amazonUserToken");
+  const userData = JSON.parse(localStorage.getItem("amazonUser"));
+  const userId = userData?._id;
 
   const response = await fetch("http://localhost:3007/api/amazon/cart", {
     method: "POST",
@@ -68,7 +70,7 @@ export const addCartToServer = async (item) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(item),
+    body: JSON.stringify({ ...item, userId }),
   });
 
   if (!response.ok) {
