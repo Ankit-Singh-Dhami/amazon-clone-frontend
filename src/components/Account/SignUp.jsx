@@ -32,8 +32,7 @@ export default function Signup() {
     };
 
     try {
-      const response = await signinData(Data);
-      console.log("Login success:", response);
+      await signinData(Data);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error.message);

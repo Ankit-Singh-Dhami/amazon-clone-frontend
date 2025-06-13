@@ -38,10 +38,8 @@ const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (item) => {
-    console.log(item);
     try {
-      const addedItem = await addCartToServer(item);
-      console.log("the error while adding", addedItem);
+      await addCartToServer(item);
       await fetchCart();
     } catch (err) {
       console.error("Error adding to cart:", err.message);

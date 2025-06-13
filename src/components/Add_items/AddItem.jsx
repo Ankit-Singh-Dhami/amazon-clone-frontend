@@ -7,8 +7,6 @@ const AddItem = ({ items }) => {
   const { cart, addToCart, removeFromCart } = useContext(CartContext);
   const { removeFromItem } = useContext(ItemContext);
 
-  console.log("cart:", cart); // Optional: helps you debug if cart is correct
-
   return (
     <div className={style.itemsList}>
       {Array.isArray(items) && items.length > 0 ? (
@@ -38,7 +36,6 @@ const AddItem = ({ items }) => {
             ) : (
               <button
                 onClick={() => {
-                  console.log(item);
                   addToCart(item);
                 }}
                 className={style.addToCartButton}

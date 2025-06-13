@@ -22,7 +22,6 @@ export default function Login() {
     try {
       // Replace this with your actual login API call
       const response = await loginData(Data);
-      console.log("Login success:", response);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error.message);

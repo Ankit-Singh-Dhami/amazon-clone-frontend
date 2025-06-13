@@ -5,6 +5,7 @@ import Item1 from "../components/Main/Item1.jsx";
 import Nav2 from "../components/NavBar/Nav2.jsx";
 import Navbar from "../components/NavBar/Navbar.jsx";
 import HostDashboard from "../components/Main/HostDashboard.jsx";
+import AddItems from "../components/Add_items/AddItems.jsx";
 
 const Home = () => {
   const userData = localStorage.getItem("amazonUser");

@@ -7,7 +7,6 @@ export const signinData = async (data) => {
   });
 
   const result = await response.json();
-  console.log(result);
 
   if (result.success) {
     alert("Signup successful!");
@@ -26,7 +25,6 @@ export const loginData = async (data) => {
   });
 
   const result = await response.json();
-  console.log(result);
 
   if (response.ok) {
     localStorage.setItem("amazonUserToken", result.token);
@@ -78,7 +76,6 @@ export const addCartToServer = async (item) => {
   }
 
   const result = await response.json();
-  console.log(result);
 
   return result; // Correct!
 };

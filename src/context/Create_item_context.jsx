@@ -38,7 +38,6 @@ const ItemProvider = ({ children }) => {
   const fetchItems = async () => {
     try {
       const products = await getProducts();
-      console.log("Fetched response:", products); // now this will show an array
 
       if (Array.isArray(products)) {
         dispatchItem({ type: "SET_ITEMS", payload: products });

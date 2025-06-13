@@ -12,8 +12,6 @@ const Cart = () => {
     setQuantities(cart.map(() => 1));
   }, [cart]);
 
-  console.log(cart);
-
   const { removeFromCart } = useContext(CartContext);
 
   const handleDecrease = (index) => {
