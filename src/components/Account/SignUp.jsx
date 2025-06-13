@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "../../styles/account_css/signUp.module.css";
 import amazon from "../../styles/images/amazon_logo.png";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { signinData } from "../../service/serverData";
 import { useNavigate } from "react-router-dom";
 
@@ -32,7 +32,11 @@ export default function Signup() {
     };
 
     try {
+<<<<<<< HEAD
       await signinData(Data);
+=======
+      const response = await signinData(Data);
+>>>>>>> d1eb9979703520556bbf3c60575a1b25c27da365
       navigate("/");
     } catch (error) {
       console.error("Login error:", error.message);

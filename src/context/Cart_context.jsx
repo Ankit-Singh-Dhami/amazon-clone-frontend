@@ -39,7 +39,11 @@ const CartProvider = ({ children }) => {
 
   const addToCart = async (item) => {
     try {
+<<<<<<< HEAD
       await addCartToServer(item);
+=======
+      const addedItem = await addCartToServer(item);
+>>>>>>> d1eb9979703520556bbf3c60575a1b25c27da365
       await fetchCart();
     } catch (err) {
       console.error("Error adding to cart:", err.message);

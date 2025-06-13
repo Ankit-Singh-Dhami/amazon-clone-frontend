@@ -4,6 +4,10 @@ import { CartContext } from "../../context/Cart_context";
 import { ItemContext } from "../../context/Create_item_context";
 
 const AddItem = ({ items }) => {
+  const userData = localStorage.getItem("amazonUser");
+  const user = userData ? JSON.parse(userData) : null;
+  const role = user ? user.role : null;
+
   const { cart, addToCart, removeFromCart } = useContext(CartContext);
   const { removeFromItem } = useContext(ItemContext);
 
@@ -15,15 +19,20 @@ const AddItem = ({ items }) => {
             <img src={item.image} alt="Item" className={style.itemImage} />
             <p className={style.description}>{item.description}</p>
             <p className={style.price}>${item.price}</p>
-            <button
-              onClick={() => {
-                removeFromItem(item._id); // removes from item list
-                removeFromCart(item._id); // also remove from cart
-              }}
-            >
-              Remove
-            </button>
 
+            {/* Only show this button if the user is a host */}
+            {role === "host" && (
+              <button
+                onClick={() => {
+                  removeFromItem(item._id);
+                  removeFromCart(item._id);
+                }}
+              >
+                Remove
+              </button>
+            )}
+
+            {/* Add to Cart / Remove from Cart button */}
             {cart.some(
               (itemInCart) => itemInCart && itemInCart._id === item._id
             ) ? (
@@ -35,9 +44,13 @@ const AddItem = ({ items }) => {
               </button>
             ) : (
               <button
+<<<<<<< HEAD
                 onClick={() => {
                   addToCart(item);
                 }}
+=======
+                onClick={() => addToCart(item)}
+>>>>>>> d1eb9979703520556bbf3c60575a1b25c27da365
                 className={style.addToCartButton}
               >
                 Add to Cart
