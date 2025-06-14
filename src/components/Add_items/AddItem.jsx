@@ -25,7 +25,10 @@ const AddItem = ({ items }) => {
               <button
                 onClick={() => {
                   removeFromItem(item._id);
-                  removeFromCart(item._id);
+                  if (cart.productId === item._id) {
+                    removeFromCart(item._id);
+                    console.log(item._id);
+                  }
                 }}
               >
                 Remove
@@ -44,13 +47,7 @@ const AddItem = ({ items }) => {
               </button>
             ) : (
               <button
-<<<<<<< HEAD
-                onClick={() => {
-                  addToCart(item);
-                }}
-=======
                 onClick={() => addToCart(item)}
->>>>>>> d1eb9979703520556bbf3c60575a1b25c27da365
                 className={style.addToCartButton}
               >
                 Add to Cart

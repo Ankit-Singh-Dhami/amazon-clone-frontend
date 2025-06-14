@@ -63,6 +63,7 @@ export const addCartToServer = async (item) => {
   const token = localStorage.getItem("amazonUserToken");
   const userData = JSON.parse(localStorage.getItem("amazonUser"));
   const userId = userData?._id;
+  console.log(item, userId);
 
   const response = await fetch("http://localhost:3007/api/amazon/cart", {
     method: "POST",
@@ -85,7 +86,7 @@ export const addCartToServer = async (item) => {
 // Delete from Cart
 export const deleteCart = async (itemId) => {
   const token = localStorage.getItem("amazonUserToken");
-
+  console.log(itemId);
   const response = await fetch(
     `http://localhost:3007/api/amazon/cart/${itemId}`,
     {

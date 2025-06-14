@@ -32,11 +32,7 @@ export default function Signup() {
     };
 
     try {
-<<<<<<< HEAD
       await signinData(Data);
-=======
-      const response = await signinData(Data);
->>>>>>> d1eb9979703520556bbf3c60575a1b25c27da365
       navigate("/");
     } catch (error) {
       console.error("Login error:", error.message);
