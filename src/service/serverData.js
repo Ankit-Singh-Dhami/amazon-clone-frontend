@@ -1,6 +1,6 @@
 // Sign Up
 export const signinData = async (data) => {
-  const response = await fetch("http://localhost:3007/api/amazon/signin", {
+  const response = await fetch("https://amazon-clone-backend-ankit.onrender.com/api/amazon/signin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -18,7 +18,7 @@ export const signinData = async (data) => {
 
 // Login
 export const loginData = async (data) => {
-  const response = await fetch("http://localhost:3007/api/amazon/login", {
+  const response = await fetch("https://amazon-clone-backend-ankit.onrender.com/api/amazon/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -42,7 +42,7 @@ export const loginData = async (data) => {
 export const getCart = async () => {
   const token = localStorage.getItem("amazonUserToken");
 
-  const response = await fetch("http://localhost:3007/api/amazon/cart", {
+  const response = await fetch("https://amazon-clone-backend-ankit.onrender.com/api/amazon/cart", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export const addCartToServer = async (item) => {
   const userId = userData?._id;
   console.log(item, userId);
 
-  const response = await fetch("http://localhost:3007/api/amazon/cart", {
+  const response = await fetch("https://amazon-clone-backend-ankit.onrender.com/api/amazon/cart", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export const deleteCart = async (itemId) => {
   const token = localStorage.getItem("amazonUserToken");
   console.log(itemId);
   const response = await fetch(
-    `http://localhost:3007/api/amazon/cart/${itemId}`,
+    `https://amazon-clone-backend-ankit.onrender.com/api/amazon/cart/${itemId}`,
     {
       method: "DELETE",
       headers: {
@@ -109,7 +109,7 @@ export const deleteCart = async (itemId) => {
 export const addProduct = async (item) => {
   const token = localStorage.getItem("amazonUserToken");
 
-  const response = await fetch("http://localhost:3007/api/amazon/products", {
+  const response = await fetch("https://amazon-clone-backend-ankit.onrender.com/api/amazon/products", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -130,7 +130,7 @@ export const addProduct = async (item) => {
 export const getProducts = async () => {
   const token = localStorage.getItem("amazonUserToken");
 
-  const response = await fetch("http://localhost:3007/api/amazon/products", {
+  const response = await fetch("https://amazon-clone-backend-ankit.onrender.com/api/amazon/products", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -151,7 +151,7 @@ export const deleteProduct = async (productId) => {
   const token = localStorage.getItem("amazonUserToken");
 
   const response = await fetch(
-    `http://localhost:3007/api/amazon/products/${productId}`,
+    `https://amazon-clone-backend-ankit.onrender.com/api/amazon/products/${productId}`,
     {
       method: "DELETE",
       headers: {
