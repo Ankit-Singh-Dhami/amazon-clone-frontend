@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import style from "../../styles/main_css/HostDashboard.module.css";
+import style from "../../styles/main_css/hostDashboard.module.css";
 import AddItems from "../Add_items/AddItems";
 
 const HostDashboard = () => {

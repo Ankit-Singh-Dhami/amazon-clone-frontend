@@ -1,4 +1,4 @@
-import style from "../../styles/nav_css/Navbar.module.css";
+import style from "../../styles/nav_css/NavBar.module.css";
 import amazon from "../../styles/images/amazon_logo.png";
 import { IoMdCart } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
